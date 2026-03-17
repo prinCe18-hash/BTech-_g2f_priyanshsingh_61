@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h> // For abs()
+
+int main() {
+    long long num, originalNum, reversedNum = 0;
+    int isNegative = 0;
+
+    printf("Enter an integer: ");
+    // Validate input
+    if (scanf("%lld", &num) != 1) {
+        printf("Invalid input. Please enter a valid integer.\n");
+        return 1;
+    }
+
+    // Handle negative numbers
+    if (num < 0) {
+        isNegative = 1;
+        num = llabs(num); // Work with absolute value
+    }
+
+    originalNum = num;
+
+    // Reverse digits using a loop
+    while (num != 0) {
+        int digit = num % 10;               // Get last digit
+        reversedNum = reversedNum * 10 + digit; // Append digit
+        num /= 10;                          // Remove last digit
+    }
+
+    // Restore sign if original number was negative
+    if (isNegative) {
+        reversedNum = -reversedNum;
+    }
+
+    printf("Original number: %lld\n", isNegative ? -originalNum : originalNum);
+    printf("Reversed number: %lld\n", reversedNum);
+
+    return 0;
+}
