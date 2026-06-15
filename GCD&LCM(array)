@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int n1, n2, a, b, gcd, lcm, remainder;
+
+    printf("Enter two integers: ");
+    scanf("%d %d", &n1, &n2);
+
+    a = n1;
+    b = n2;
+
+    // Euclidean Algorithm to find GCD
+    while (b != 0) {
+        remainder = a % b;
+        a = b;
+        b = remainder;
+    }
+    gcd = a;
+
+    // Calculate LCM using formula: (n1*n2) / GCD
+    lcm = (n1 * n2) / gcd;
+
+    printf("GCD of %d and %d is: %d\n", n1, n2, gcd);
+    printf("LCM of %d and %d is: %d\n", n1, n2, lcm);
+
+    return 0;
+}

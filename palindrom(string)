@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[100];
+    int length;
+    int flag = 0; // Flag to indicate if the string is not a palindrome
+
+    printf("Enter a string: ");
+    // Use scanf to read the input string.
+    // Note: scanf stops reading at the first whitespace. For strings with spaces, consider using fgets.
+    scanf("%s", str);
+
+    // Calculate the length of the string
+    length = strlen(str);
+
+    // Compare characters from the start and end of the string
+    // and stop if a mismatch is found or the middle of the string is reached.
+    for (int i = 0; i < length / 2; i++) {
+        if (str[i] != str[length - i - 1]) {
+            flag = 1; // Set flag to 1 if a mismatch is found
+            break;    // Exit the loop early
+        }
+    }
+
+    // Output the result based on the flag value
+    if (flag == 0) {
+        printf("%s is a palindrome.\\n", str);
+    } else {
+        printf("%s is not a palindrome.\\n", str);
+    }
+
+    return 0;
+}
